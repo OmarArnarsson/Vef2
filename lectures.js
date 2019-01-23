@@ -26,7 +26,7 @@ async function list(req, res) {
   const { lectures } = data;
   console.log(lectures);
 
-  res.render('lectures', { title, lectures });
+  res.render('index', { title, lectures });
 }
 
 async function lecture(req, res, next) {
