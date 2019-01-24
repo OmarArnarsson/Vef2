@@ -12,6 +12,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const hostname = '127.0.0.1';
 const port = 3000;
 app.use('/', lectures);
+/*app.use('/:slug,', lectures);*/
 
 function notFoundHandler(req, res, next) { // eslint-disable-line
     res.status(404).send('404 Not Found');

@@ -29,9 +29,20 @@ async function list(req, res) {
   res.render('index', { title, lectures });
 }
 
+console.log("Einar, veistu hvað þú þarft að gera?");
 async function lecture(req, res, next) {
   /* todo útfæra */
+  const title = 'Fyrirlestrar';
+  const data = await lesaskra();
+  const { lectures } = data;
+  const { slug } = req.params;
+  const foundData = data.lectures.find(a => a.slug === slug);
 
+  if(!foundData) {
+    return next();
+  }
+
+  res.render('lectures', { foundData, slug, title});
 }
 
 router.get('/', catchErrors(list));
