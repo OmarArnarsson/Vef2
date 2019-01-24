@@ -1,13 +1,14 @@
 const express = require('express');
 const fs = require('fs');
 const util = require('util');
-const hjalp = require('./hjalp')
+const hjalp = require('./hjalp') // js sem býr til fyrirlestur
 
 const readFile = util.promisify(fs.readFile);
 
 const router = express.Router();
 
 async function lesaskra() {
+  //Lesa Json skrá og parse-a hana
   const texti = await readFile('./lectures.json');
 
   const json = JSON.parse(texti);
@@ -20,7 +21,6 @@ function catchErrors(fn) {
 }
 
 async function list(req, res) {
-  /* todo útfæra */
   //lesa fyrirlestrana inn og birta
   const title = 'Fyrirlestrar';
   const data = await lesaskra();
@@ -31,7 +31,7 @@ async function list(req, res) {
 
 
 async function lecture(req, res, next) {
-  /* todo útfæra */
+  // Lesa inn ákveðinn fyrirlestur og birta
   const data = await lesaskra();
   const { lectures } = data;
   const { slug } = req.params;

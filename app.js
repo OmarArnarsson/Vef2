@@ -10,12 +10,11 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const hostname = '127.0.0.1';
-const port = 3002;
+const port = 3000;
 app.use('/', lectures);
-/*app.use('/:slug,', lectures);*/
 
 function notFoundHandler(req, res, next) { // eslint-disable-line
-    res.status(404).send('404 Not Found');
+    res.status(404).send('Þessi síða er ekki til!');
 }
 
 function errorHandler(err, req, res, next) { // eslint-disable-line
