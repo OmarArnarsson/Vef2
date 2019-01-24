@@ -1,6 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const util = require('util');
+const hjalp = require('./hjalp')
 
 const readFile = util.promisify(fs.readFile);
 
@@ -24,15 +25,13 @@ async function list(req, res) {
   const title = 'Fyrirlestrar';
   const data = await lesaskra();
   const { lectures } = data;
-  console.log(lectures);
 
   res.render('index', { title, lectures });
 }
 
-console.log("Einar, veistu hvað þú þarft að gera?");
+
 async function lecture(req, res, next) {
   /* todo útfæra */
-  const title = 'Fyrirlestrar';
   const data = await lesaskra();
   const { lectures } = data;
   const { slug } = req.params;
@@ -42,7 +41,11 @@ async function lecture(req, res, next) {
     return next();
   }
 
-  res.render('lectures', { foundData, slug, title});
+  const { title } = foundData;
+  const { category } = foundData;
+  const html = hjalp.createContent(foundData.content);
+
+  res.render('lectures', { html, title, category, data : foundData});
 }
 
 router.get('/', catchErrors(list));

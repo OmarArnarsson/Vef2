@@ -2,22 +2,7 @@
 
     <section class="lecture">
         <div class ="heading"></div>
-        <div class="lecture__content">
-            <div class="lecture__row">
-                <div class="lecture__col">
-                        <% lectures.forEach((slug) => { %>
-                            <p>Faðir þinn er hóra</p>
-                            <% if (slug.content.type === "text") { %>
-                                <p><%= slug.content.data %></p>
-                                <p>Bróðir og móðir og pabbi og barn og hundur og köttur og músa manna</p>
-                              <% } %>
-                              <p>VVVVVVVVVVV</p>
-                          <% }); %>
-                          <p>Tits</p>
-                    <!--Foreach-->
-                </div>
-            </div>
-        </div>
+            <%- html %>
     </section>
 
 <%- include('footer'); -%>
