@@ -45,7 +45,7 @@ async function lecture(req, res, next) {
   const { category } = foundData;
   const html = hjalp.createContent(foundData.content);
 
-  res.render('lectures', { html, title, category, data : foundData});
+  res.render('lectures', { html, title, category, data, lectures : foundData});
 }
 
 router.get('/', catchErrors(list));

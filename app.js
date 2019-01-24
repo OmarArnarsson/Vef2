@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 const hostname = '127.0.0.1';
-const port = 3000;
+const port = 3002;
 app.use('/', lectures);
 /*app.use('/:slug,', lectures);*/
 
