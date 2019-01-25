@@ -14,19 +14,17 @@ const port = 3000;
 app.use('/', lectures);
 
 function notFoundHandler(req, res, next) { // eslint-disable-line
-    res.status(404).send('Þessi síða er ekki til!');
+  res.status(404).send('Þessi síða er ekki til!');
 }
 
 function errorHandler(err, req, res, next) { // eslint-disable-line
-    console.error(err);
-    res.status(500).send('Villa!');
+  console.error(err);
+  res.status(500).send('Villa!');
 }
 
 app.use(notFoundHandler);
 app.use(errorHandler);
 
 app.listen(port, hostname, () => {
-    console.info(`Server running at http://${hostname}:${port}/`);
+  console.info(`Server running at http://${hostname}:${port}/`);
 });
-
-
